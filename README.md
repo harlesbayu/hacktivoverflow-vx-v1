@@ -1,4 +1,4 @@
-#MYAPP - SOLVEKU
+# MYAPP - SOLVEKU
 
 ## CARA MENGGUNAKAN APLIKASI
 
@@ -9,9 +9,9 @@ Jalankan perintah npm run serve pada terminal *(buka terminal pada folder client
 Jalankan mongod pada terminal, atau bisa menggunakan database MLAB, Keteranangan ada pada file .env
 ```
 
-##SERVER SIDE 
+## SERVER SIDE 
 
-###USER
+### USER
 
 |           Route           |  HTTP  |                         Description                        |
 |---------------------------|--------|------------------------------------------------------------|
@@ -20,7 +20,7 @@ Jalankan mongod pada terminal, atau bisa menggunakan database MLAB, Keteranangan
 | /users/signinFB           | POST   | Login user melalui facebook                                |
 
 
-###QUESTION
+### QUESTION
 
 |           Route                  |   HTTP  |                         Description                              |
 |----------------------------------|---------|------------------------------------------------------------------|
@@ -37,7 +37,7 @@ Jalankan mongod pada terminal, atau bisa menggunakan database MLAB, Keteranangan
 | /questions/downvote/:id          | POST    | downvote question                                                |
 
 
-###ANSWER
+### ANSWER
 
 |           Route                  |   HTTP  |                         Description                              |
 |----------------------------------|---------|------------------------------------------------------------------|
