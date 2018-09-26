@@ -19,7 +19,6 @@
               </v-flex>
               </v-layout>
               </v-container>
-              <small>*indicates required field</small>
           </v-card-text>
           <div style="text-align: center;">
             <v-spacer></v-spacer>
