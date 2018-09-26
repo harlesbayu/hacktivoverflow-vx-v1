@@ -60,12 +60,12 @@ export default {
           token : localStorage.getItem('token')
         }
       })
-      .then(function () {
+      .then(function (response) {
         self.title = ''
         self.description = ''
         self.allQuestions()
         self.myQuestionsAct()
-        self.$router.push('/')
+        self.$router.push(`/questions/${response.data.question._id}`)
       })
       .catch(function (err) {
         console.log(err.response)

@@ -46,7 +46,6 @@ export default new Vuex.Store({
         url: `${config.port}/questions`
       })
         .then(function (response) {
-          console.log(response)
           commit('getAllQuestion', response.data)
         })
         .catch(function (err) {
@@ -136,6 +135,45 @@ export default new Vuex.Store({
       
       })
 
+    },
+    searchQuestion: function ({commit, dispatch}, payload) {
+
+      let self = this
+      axios({
+        method: 'get',
+        url: `${config.port}/questions/searchQuestuon?title=${payload}`
+      })
+      .then(function (response) {
+        commit('getAllQuestion', response.data)
+      })
+      .catch(function (err) {
+        console.log(err.response)
+      })
+
+    },
+    searchMostAnswers: function ({commit, dispatch}, payload) {
+      axios({
+        method: 'get',
+        url: `${config.port}/questions/mostAnswers`
+      })
+        .then(function (response) {
+          commit('getAllQuestion', response.data)
+        })
+        .catch(function (err) {
+          console.log(err.response)
+        })
+    },
+    searchPopularQuestion: function ({commit, dispatch}, payload) {
+      axios({
+        method: 'get',
+        url: `${config.port}/questions/popularQuestions`
+      })
+        .then(function (response) {
+          commit('getAllQuestion', response.data)
+        })
+        .catch(function (err) {
+          console.log(err.response)
+        })
     }
   }
 })

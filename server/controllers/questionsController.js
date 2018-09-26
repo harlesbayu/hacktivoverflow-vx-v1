@@ -43,8 +43,9 @@ module.exports = {
     })
 
     dataQuestion.save()
-    .then(function () {
+    .then(function (question) {
       res.status(201).json({
+        question,
         message: `create question success`
       })
     })
@@ -141,15 +142,40 @@ module.exports = {
   },
 
   mostAnswer: function (req,res) {
-    Question.find()
-    .populate({
-      "answers" : {$size: {$gt:3}}
-    })
+    Question.find().sort({answers: -1}).limit(10)
+    .populate('answers')
+    .populate('postBy')
     .then(function (questions) {
       res.status(200).json({
         questions
       })
     })
-  }
+  },
+
+  popularQuestions: function (req,res) {
+
+    Question.find()
+    .sort({upvote: -1}).limit(10)
+    .populate('answers')
+    .populate('postBy')
+    .then(function (questions) {
+      res.status(200).json({
+        questions
+      })
+    })
+
+  },
+
+  searchQuestuon: function(req,res){
+
+    Question.find({title: new RegExp(req.query.title, 'i')})
+    .sort([['createdAt', 'descending']])
+    .populate('postBy')
+    .then(function(questions){
+        res.status(200).json({
+          questions
+        })
+    })
+},
 
 }

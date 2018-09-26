@@ -10,6 +10,16 @@
         <v-toolbar-title class="white--text" style="font-size:14px;"><v-icon style="color:#FFFFFF;">note_add</v-icon>Create Question</v-toolbar-title>
       </router-link>
 
+    
+      <v-text-field  
+        class="ml-12" 
+        v-model="seacrh" 
+        label="Search..."
+        style="margin-left:15px;"  
+        dark>
+      </v-text-field>
+  
+
       <v-spacer></v-spacer>
       <div v-if="!isLogin">
         <ModalLogin/>
@@ -51,17 +61,27 @@ export default {
   },
   created: function () {},
   methods: {
-    ...mapActions(['setIslogin', 'setUserEmail']),
+    ...mapActions(['setIslogin', 'setUserEmail', 'searchQuestion']),
 
     btnLogout: function () {
       localStorage.removeItem('token')
       localStorage.removeItem('email')
       this.setIslogin()
       this.setUserEmail()
-    }
+    },
+       
   },
   computed: {
-    ...mapState(['isLogin'])
+    ...mapState(['isLogin']),
+
+    seacrh: {
+      set: function (value) {
+        this.searchQuestion(value)
+        this.$router.push('/')
+      },
+      get: function () {}
+    }
+
   }
 }
 </script>
